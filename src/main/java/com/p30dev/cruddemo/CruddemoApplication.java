@@ -29,11 +29,14 @@ public class CruddemoApplication {
 //		System.out.println("Enter the student Name: ");
 //		String studentName =  scanner.nextLine();
 
-		System.out.println("Enter the student Name have the Last Name updated: ");
-		String studentCurrentName =  scanner.nextLine();
+//		System.out.println("Enter the student Name have the Last Name updated: ");
+//		String studentCurrentName =  scanner.nextLine();
+//
+//		System.out.println("Enter the student New Last Name: ");
+//		String studentNewLastName =  scanner.nextLine();
 
-		System.out.println("Enter the student New Last Name: ");
-		String studentNewLastName =  scanner.nextLine();
+		System.out.println("Enter the student first name to be deleted: ");
+		String firstName =  scanner.nextLine();
 
 		return runner -> {
 //			createStudent(studentDAO);
@@ -46,10 +49,17 @@ public class CruddemoApplication {
 
 //			getStudentByName(studentDAO, studentName);
 
-			updateStudentLastName(studentDAO, studentCurrentName, studentNewLastName);
+//			updateStudentLastName(studentDAO, studentCurrentName, studentNewLastName);
 
 //			updateAllStudentsLastNameToTester(studentDAO);
+
+			deleteStudent(studentDAO, firstName);
 		};
+	}
+
+	private void deleteStudent(StudentDAO studentDAO, String firstName) {
+		studentDAO.deleteStudent(firstName);
+		System.out.printf("Student %s was deleted", firstName);
 	}
 
 	private void updateAllStudentsLastNameToTester(StudentDAO studentDAO) {

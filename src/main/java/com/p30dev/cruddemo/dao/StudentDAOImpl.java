@@ -63,4 +63,19 @@ public class StudentDAOImpl implements StudentDAO{
     public void updateAllStudentsLastName() {
         int updates = entityManager.createQuery("UPDATE Student SET lastName = 'TESTER'").executeUpdate();
     }
+
+    @Override
+    @Transactional
+    public void deleteStudent(String firstName) {
+        //The standard way of deleting entities from a table is using the object id.
+        //First step is to retrieve the Object by using the entityManager.find(Object.class, id);
+        //Then running entityManager.remove(object)
+
+        //Custom method can replace the way of retrieving the needed object.
+
+        //Also custom queries can be written, mainly used to delete all entries in a table: "DELETE FROM Table_name"
+
+        Student student = this.findByName(firstName);
+        entityManager.remove(student);
+    }
 }
